@@ -9,26 +9,31 @@ let persona = {
 
 const concesionaria = {
   autos: autos,
+
   buscarAuto: function (pat) {
     let autoBuscado = this.autos.find(function(e){
       return e.patente == pat;
       })
-    return autoBuscado === undefined ? null : autoBuscado
+    return autoBuscado === undefined ? null : autoBuscado;
   },
+
   venderAuto: function(pat) {
     this.buscarAuto(pat).vendido = true;
   },
+
   autosParaLaVenta: function() {
     return this.autos.filter(function(e){
       return e.vendido == false;
     })
   },
+
   autosNuevos: function() {
     let autosVenta = this.autosParaLaVenta();
     return autosVenta.filter(function(e){
       return e.km < 100;
     })
   },
+
   autosVendidos: function() {
     return this.autos.filter(function(e){
       return e.vendido == true;
@@ -43,6 +48,7 @@ const concesionaria = {
     })
     return listaDeVentas;
   },
+
   totalDeVentas: function() {
     let listaDeVentas = this.listaDeVentas();
     let ventas = listaDeVentas.reduce(function(acc,e){
@@ -62,7 +68,7 @@ const concesionaria = {
     })
     return autosPuedeComprar;
   }
- 
+
 }
 
 
